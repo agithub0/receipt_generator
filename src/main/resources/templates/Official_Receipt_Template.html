@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<link href="" th:href="@{classpath:static/css/Official_Receipt_Template.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<img th:src="@{classpath:static/image/Receipt_template.jpg}">
+	<header>
+		<h4 th:text="${receipt_information.seller_buisness_style}">east west BANKING CORPORATION</h4>
+		<p>MARVIN CALAYAN, M.D.</p>
+		<span>NON-VAT Reg. TIN: <span th:text="${receipt_information.seller_tin}">003-921-057-0000</span></span>
+		<p th:text="${receipt_information.seller_reg_address}">The Beaufort, 23rd St., cor. 5th Ave., BGC, Taguig City</p>
+		<p><span th:text="${receipt_information.seller_buisness_style}">BUSINESS STYLE</span> TEL. NO. 02 981-8888</p>
+		<h4 id="receipt_type"> OFFICIAL RECEIPT</h4>
+	</header>
+	<div id="date">
+		<p>Date: <span th:text="${receipt_information.date}"></span></p>
+	</div>
+	<div id="sequence_no">NO-000000500</div>
+	<hr>
+	</hr>
+	<div id="buyer_info">
+		<table>
+			<tr>
+				<th>CUSTOMER NAME</th>
+				<th>TIN</th>
+				<th>ADDRESS</th>
+			</tr>
+			<tr>
+				<td th:text="${receipt_information.buyer_reg_nm}"></td>
+				<td th:text="${receipt_information.buyer_tin}"></td>
+				<td th:text="${receipt_information.buyer_reg_address}"></td>
+			</tr>
+			<tr>
+				<th>BUSINESS STYLE</th>
+				<th>OSCA/PWD NO.</th>
+				<th>SIGNATURE</th>
+			</tr>
+			<tr>
+				<td th:text="${receipt_information.buyer_buisness_style}"></td>
+				<td th:text="${receipt_information.osc_pwd_no}"></td>
+				<td th:text="${receipt_information.buyer_buisness_style}"></td>
+			</tr>
+			<div id="payment">
+
+						<p>TOTAL SALES:<br>(VAT INCLUSIVES)
+						<span th:text="${receipt_information.total_sales}"></span></p>
+						
+				
+						<p>LESS:
+						<span>12% VAT</span></p>
+					
+						<p>NET OF VAT/TOTAL:
+						<span th:text="${receipt_information.vatAmt}"></span></p>
+				
+						<p>LESS: SC/PWD DISC.:
+						<span th:text="${receipt_information.discount_scAmt}"></span></p>
+					
+						<p>TOTAL DUE:
+						<span th:text="${receipt_information.totNetSalesAftDisct}"></span></p>
+					
+						<p>LESS: WITHHOLDING
+						<span th:text="${receipt_information.withholdIncome}"></span></p>
+				
+						<p>TOTAL AMOUNT DUE
+						<span th:text="${receipt_information.netAmtPay}"></span></p>
+					
+						<p>VATABLE (V)<br>VAT EXEMPT (E)<br>ZERO-RATED (Z)<br>VAT (12%)<br>Total
+						<span th:text="${receipt_information.netAmtPay}"></span></p>
+			
+				<p><span>[ ] CASH</span><span>[ ] CHECK </span><span>[ ] CREDIT</span></p>
+			</div>
+			<table id="line_items">
+				<tr>
+					<th>IN PAYMENT OF THE FOLLOWING SERVICE/TRANSACTION/DESCRIPTION</th>
+					<th>QTY</th>
+					<th>UNIT PRICE</th>
+					<th>AMOUNT</th>
+				</tr>
+				<tr>
+					<td th:text="${receipt_information.payment_name}"></td>
+					<td th:text="${receipt_information.payment_qty}"></td>
+					<td th:text="${receipt_information.payment_unit_cost}"></td>
+					<td th:text="${receipt_information.payment_sales_amt}"></td>
+				</tr>
+			</table>
+			<table id="other_info">
+				<tr>
+					<th colspan="2">PRINTER’S NAME</th>
+					<th>TIN</th>
+					<th>ADDRESS</th>
+					<th>PINTER’S ACCREDITATION NO.</th>
+					<th>DATE ISSUED: </th>
+					<th>EXPIRY DATE</th>
+				</tr>
+				<tr>
+					<td colspan="2" th:text="${receipt_information.seller_buisness_style}" ></td>
+					<td th:text="${receipt_information.seller_tin}"></td>
+					<td th:text="${receipt_information.seller_reg_address}"></td>
+					<td th:text="${receipt_information.seller_accreditation}"></td>
+					<td th:text="${receipt_information.bookingDateTime}"></td>
+					<td th:text="${receipt_information.bookingDateTime}"></td>
+				</tr>
+				<tr>
+					<th>PTU NO</th>
+					<th>BOX/BKLT. NO.</th>
+					<th>SETS</th>
+					<th>COPIES PER SET</th>
+					<th>SERIAL NO</th>
+					<th>BIR ATP NO</th>
+					<th>DATE ISSUED</th>
+				</tr>
+				<tr>
+					<td th:text="${receipt_information.ptu_no}"></td>
+					<!--<td th:text="${receipt_information.tin}"></td>
+					<td th:text="${receipt_information.address}"></td>
+					<td th:text="${receipt_information.tin}"></td>
+					<td th:text="${receipt_information.address}"></td>
+					<td th:text="${receipt_information.receivedFrom}"></td>-->
+					<td>2 BKLT</td>
+					<td>100</td>
+					<td>3x</td>
+					<td>000000001 - 000000500</td>
+					<td>3AU000805222</td>
+					<td th:text="${receipt_information.bookingDateTime}"></td>
+				</tr>
+				<table>
+	</div>
+
+	</img>
+</body>
+
+</html>

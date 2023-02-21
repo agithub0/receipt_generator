@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<link href="" th:href="@{classpath:static/css/Acknowledgement_Receipt_Template.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<div id="certificate_box">
+		<img th:src="@{classpath:static/image/Receipt_template.jpg}">
+		<header>
+			<h3 th:text="${receipt_information.seller_buisness_style}">east west BANKING CORPORATION</h3>
+			<p th:text="${receipt_information.seller_reg_address}">The Beaufort, 23rd St., cor. 5th Ave., BGC, Taguig City
+			</p>
+			<p>NON-VAT Reg. TIN: <span th:text="${receipt_information.seller_tin}">003-921-057-0000</span>
+			</p>
+			<h3 id="receipt_type">ACKNOWLEDGEMENT RECEIPT</h3>
+		</header>
+	<div id="date"><p>Date: <span th:text="${receipt_information.date}"></span></p></div>
+		<div id=form>
+			<p id="buyer_info">
+					Received from <span th:text="${receipt_information.buyer_reg_nm}"></span>
+					TIN <span th:text="${receipt_information.buyer_tin}"></span> <br>
+					Address <span th:text="${receipt_information.buyer_reg_address}" th:style="'width:13.5cm'"></span><br>
+					Business style of <span th:text="${receipt_information.buyer_buisness_style}" th:style="'width:12cm'"></span>
+			</p>
+			<p id="payment_details">
+				Payment Details<br>
+				Amount <span th:text="${receipt_information.amountInWords}" th:style="'width:10cm'"></span>
+				pesos (<span th:text="${receipt_information.netAmtPay}" th:style="'width:3cm'"></span>)<br>
+				For the payment of: <span th:text="${receipt_information.payment_name}" th:style="'width:11cm'"></span>
+			</p>
+			<p id="permit">BIR CAS Permit: <span th:text="${receipt_information.permit}"></span><br>
+				Date Issued: <span th:text="${receipt_information.bookingDateTime}"></span></p>
+		</div>
+		</img>
+	</div>
+</body>
+
+</html>

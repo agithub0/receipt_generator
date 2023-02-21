@@ -1,0 +1,68 @@
+body{
+	width:810px;
+	height:750px;
+}
+#certificate_box{
+	position:absolute;
+	width:710px;
+	height:610px;
+}
+img{
+	width:700px;
+	height:600px;
+	border: 2px solid #ccc;
+	
+}
+#date{
+	position:absolute;
+top:80px;
+	left:13cm;
+}
+header{
+	position:absolute;
+	top:5px;
+	right:2cm;
+	text-align: center;
+/*		border: 2px solid red;
+*/
+}
+header h3{
+  text-transform: uppercase;
+}
+header p{
+	 font-size:1em;
+  font-weight: lighter;
+  margin-top:-20px;
+}
+#receipt_type{
+  margin-top:-15px;
+}
+
+#form{
+position:absolute;
+top:140px;
+  height:8cm;
+  width:18cm;
+  font-size:1em;
+  padding-left:40px;
+}
+span{
+	display:inline-block;
+	width:5.5cm;
+	padding-left:10px;
+	border-bottom: 2px solid black;
+	font-size:0.8em;
+}
+#buyer_info{
+	margin-bottom: 30px;
+}
+#permit{
+	position:absolute;
+	left:11.5cm;
+	bottom:0;
+}
+#permit span,#date span{
+	width:2.5cm;
+}
+
+

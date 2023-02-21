@@ -1,0 +1,44 @@
+apiVersion: v1 # Kubernetes API version
+kind: Service # Kubernetes resource kind we are creating
+metadata: # Metadata of the resource kind we are creating
+  name: eis-receipt-generator-service
+spec:
+  selector:
+    app: eis-receipt-generator
+  ports:
+    - protocol: "TCP"
+      port: 8000 # The port that the service is running on in the cluster
+      targetPort: 8000 # The port exposed by the service
+  type: LoadBalancer
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: eis-receipt-generator
+  name: eis-mock-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eis-receipt-generator
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: eis-receipt-generator
+    spec:
+      containers:
+        - image: ashishdocker0/eis-mock:4.0
+          name: eis-receipt-generator
+          ports:
+            - containerPort: 8000
+          env:
+            - name: EMAIL_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: receipt-generator-config-map
+                  key: Email_url
+           

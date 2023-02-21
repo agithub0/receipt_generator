@@ -1,0 +1,121 @@
+body{
+	width:810px;
+	height:750px;
+}
+img{
+	margin-left:-40px;
+	width:770px;
+	height:600px;
+	border: 2px solid #ccc;
+	
+}
+#date{
+	position:absolute;
+	top:70px;
+	left:11cm;
+	font-size:0.8em;
+}
+header{
+	position:absolute;
+	width:600px;
+	top:5px;
+	left:-10px;
+	text-transform: uppercase;
+	/*border: 2px solid red;*/
+}
+header p{
+ font-size:0.8em;
+ font-weight:600;
+ margin:-5px 0px;
+}
+header span{
+	display:inline-flex;
+	font-size:0.8em;
+	font-weight:bold;
+
+/* background:pink;*/
+}
+header h4{
+	margin-bottom:-6px;
+}
+
+#sequence_no,#official{
+	position:absolute;
+	top:30px;
+	left:15cm;
+}
+#receipt_type{
+	position:absolute;
+	top:80px;
+}
+/*#official{
+	top:70px;
+	text-align: center;
+	height:30px;
+	width:120px;
+	background:#ccc;
+	padding-top:10px;
+	border-radius: 0.5em;
+	border: 1px solid black;
+	font-weight:bold;
+} */
+hr{
+	position:absolute;
+	top:120px;
+	right:1px;
+	width:18.5cm;
+	size:8;
+	color:black;
+	
+}
+#buyer_info{
+	position:absolute;
+	top:140px;
+	left:-5px;
+	font-size: 0.7em;
+	
+}
+table{
+	width:18.5cm;
+ }
+table,th,td{
+	border: 1px solid rgb(154, 154, 154);
+  	border-collapse: collapse;
+}
+th{
+	background:#ccc;
+}
+tr{
+	text-align:center;
+}
+td{
+	height:40px;
+	}
+#line_items{
+	margin-top:10px;
+	width:13.4cm;
+}
+#payment{
+	position:absolute;
+	background:#ccc;
+	top:130px;
+	right:0;
+	height:7cm;
+	width:5cm;
+	border: 2px ridge #ccc;
+	border-radius: 0 0 3em 0;
+	font-size:0.8em;
+}
+ #payment span{
+	margin-left:20px;
+	font-weight: bold;
+}
+
+#other_info td{
+	height:10px;
+}
+#other_info{
+	margin-top:10px;
+	width:13.4cm;
+	font-size:0.6em;
+}
