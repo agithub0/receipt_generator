@@ -13,11 +13,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 
 @RestController
+@RequestMapping("/receipt")
 public class ReceiptGeneratorController {
 	
 	@Autowired
@@ -35,33 +37,26 @@ public class ReceiptGeneratorController {
 	final String ACKNOWLEDGEMENT_PATH="Generated_Receipt/Acknowledgement_Receipt.pdf";
 	final String OFFICIAL_PATH="Generated_Receipt/Official_Receipt.pdf";
 	
-	@PostMapping(value = "/generate_receipt")
-	public void generateDocument(@RequestBody ReceiptInformation receipt_information) {
+	//ACKNOWLEDGEMENT RECEIPT
+	@PostMapping(value = "/acknowledgement")
+	public void generateAcknowledgementDocument(@RequestBody ReceiptInformation receipt_information) {
 		//ReceiptInformation receipt_information= receipt_info_value();
 		Context dataContext = dataMapper.setData(receipt_information);
 		
 		String acknowledgement_receipt = springTemplateEngine.process("Acknowledgement_Receipt_Template",dataContext);
-		String official_receipt = springTemplateEngine.process("Official_Receipt_Template", dataContext);
-		
-		
 		pdfGenerator.htmlToPdf(acknowledgement_receipt,ACKNOWLEDGEMENT_PATH);
-		pdfGenerator.htmlToPdf(official_receipt,OFFICIAL_PATH);
-		 emailReceipt.sendReceiptViaEmail();
+		 emailReceipt.sendReceiptViaEmail(receipt_information.getCustomer_email());
 		
 	}
 	
-	public ReceiptInformation receipt_info_value() {
-		ReceiptInformation receipt_information = new ReceiptInformation();
-//		receipt_information.setReceivedFrom("DONG-A PHARMA PHILS. INC.");
-//		receipt_information.setAddress("UNIT 2803 ATLANTA CENTRE ILOILO 1500 PHILIPPINES");
-//		receipt_information.setPaymentOf("wunghao");
-//		receipt_information.setAmountInWords("Ten Thousand");
-//		receipt_information.setAmountInNumbers("10000");
-//		receipt_information.setBussinessStyleOf("Garima");
-//		receipt_information.setDateIssued("20/2/2014");
-//		receipt_information.setPermit("CAS");
-//		receipt_information.setTin("225125979");
-		return receipt_information;
-		
+	//OFFICIAL RECEIPT
+	@PostMapping(value = "/official")
+	public void generateOfficialDocument(@RequestBody ReceiptInformation receipt_information) {
+		//ReceiptInformation receipt_information= receipt_info_value();
+		Context dataContext = dataMapper.setData(receipt_information);
+		String official_receipt = springTemplateEngine.process("Official_Receipt_Template", dataContext);
+		pdfGenerator.htmlToPdf(official_receipt,OFFICIAL_PATH);	
 	}
+	
+	
 }

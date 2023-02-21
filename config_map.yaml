@@ -4,4 +4,4 @@ metadata:
   name: receipt-generator-config-map
 data:
   # Configuration values can be set as key-value properties
-  Email_url: http://localhost:8080
+  Email_url: http://localhost:8000

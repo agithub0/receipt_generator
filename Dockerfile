@@ -1,4 +1,4 @@
 FROM openjdk:latest
 ADD target/*.jar receipt_generator.jar
-EXPOSE 8080
+EXPOSE 8000
 ENTRYPOINT ["java","-jar","/receipt_generator.jar"]

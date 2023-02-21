@@ -17,7 +17,7 @@ public class EmailReceipt {
 
 	@Autowired
 	private RestTemplate restTemplate;
-	public void sendReceiptViaEmail() {
+	public void sendReceiptViaEmail(String customer_Email) {
 		HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
         
@@ -38,12 +38,17 @@ public class EmailReceipt {
 		}
         HttpEntity<byte[]> fileEntity = new HttpEntity<>(receiptFileContent, receiptFileMap);
 
+        try {
+			System.out.println(Files.readAllBytes(receiptFile.toPath()));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         /*different methods*/
        
         MultiValueMap<String, Object> emailRequestBody = new LinkedMultiValueMap<>();
         emailRequestBody.add("attachment", fileEntity);
-        emailRequestBody.add("recipient", "garryj15107@gmail.com");
-        emailRequestBody.add("recipient", "garryj15107@gmail.com");
+        emailRequestBody.add("recipient", customer_Email);
         emailRequestBody.add("subject", "Acknowledgement_Receipt");
         emailRequestBody.add("msgBody", "Here is you Acknowledgement_Receipt");
         

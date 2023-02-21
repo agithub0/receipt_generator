@@ -31,7 +31,7 @@ spec:
         app: eis-receipt-generator
     spec:
       containers:
-        - image: ashishdocker0/eis-mock:4.0
+        - image: garimasrijan/eis-receipt-generator:1.0
           name: eis-receipt-generator
           ports:
             - containerPort: 8000

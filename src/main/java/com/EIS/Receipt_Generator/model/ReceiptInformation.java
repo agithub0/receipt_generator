@@ -59,6 +59,8 @@ public class ReceiptInformation {
     private String osc_pwd_no;
     //ptu
     private String ptu_no;
+    //email
+    private String customer_email;
     
     public int setSeq_no() {
     	Random rand = new Random();
